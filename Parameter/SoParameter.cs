@@ -27,7 +27,7 @@ namespace WebAPI.Parameter
         public int InsertDB(SoParameter parameter)
         {
             String sqlcomm = @"insert into SaleOrder (OrderNo,OrderItem,ProductName,Qty,Price,Amount) 
-            values (@OrderNo,@OrderItem,@ProductName,@Qty,@Price,@Amount);
+            values (@OrderNo,@OrderItem,@ProductName,@Qty,@Price,@Amount);select max(Id) from SaleOrder;
             ";
             using (SqlConnection conn = new SqlConnection(GetConnection()))
             {

@@ -48,8 +48,9 @@ namespace WebAPI.Controllers
                 Amount = parameter.Amount,
             };
           
-            var result = _insertpara.InsertDB(_insertpara);
-            return Ok();
+            int result = _insertpara.InsertDB(_insertpara);
+
+            return Ok(result);
         }
 
         //UPDATE
