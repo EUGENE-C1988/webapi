@@ -15,6 +15,9 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+//設定appsetting.json
+builder.Services.AddSingleton<IConfiguration>(builder.Configuration);
+
 builder.Services
     // 檢查 HTTP Header 的 Authorization 是否有 JWT Bearer Token
     .AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
