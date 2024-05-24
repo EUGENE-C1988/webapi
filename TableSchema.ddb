@@ -1,13 +1,13 @@
 {
   "author": "Unnamed",
   "title": "Untitled Diagram",
-  "date": "2024-05-17T08:43:01.363Z",
+  "date": "2024-05-24T08:54:50.612Z",
   "tables": [
     {
       "id": 0,
       "name": "UserInfo",
-      "x": 914,
-      "y": 66,
+      "x": 901,
+      "y": 4,
       "fields": [
         {
           "name": "GUID",
@@ -96,7 +96,7 @@
     },
     {
       "id": 1,
-      "name": "Role",
+      "name": "Roles",
       "x": 62,
       "y": 26,
       "fields": [
@@ -190,8 +190,8 @@
     {
       "id": 3,
       "name": "Pages",
-      "x": 910,
-      "y": 456,
+      "x": 802,
+      "y": 385,
       "fields": [
         {
           "name": "GUID",
@@ -206,32 +206,6 @@
           "id": 0,
           "size": "",
           "values": []
-        },
-        {
-          "name": "URL",
-          "type": "VARCHAR",
-          "default": "",
-          "check": "",
-          "primary": false,
-          "unique": false,
-          "notNull": false,
-          "increment": false,
-          "comment": "",
-          "id": 1,
-          "size": 255
-        },
-        {
-          "name": "Descript",
-          "type": "VARCHAR",
-          "default": "",
-          "check": "",
-          "primary": false,
-          "unique": false,
-          "notNull": false,
-          "increment": false,
-          "comment": "",
-          "id": 2,
-          "size": 50
         },
         {
           "name": "MainTitle",
@@ -243,7 +217,7 @@
           "notNull": false,
           "increment": false,
           "comment": "",
-          "id": 3,
+          "id": 1,
           "size": 25
         }
       ],
@@ -255,8 +229,8 @@
     {
       "id": 4,
       "name": "Menu",
-      "x": 475,
-      "y": 349,
+      "x": 398,
+      "y": 533,
       "fields": [
         {
           "name": "GUID",
@@ -273,8 +247,8 @@
           "values": []
         },
         {
-          "name": "DisplayName",
-          "type": "VARCHAR",
+          "name": "PageUID",
+          "type": "UUID",
           "default": "",
           "check": "",
           "primary": false,
@@ -283,7 +257,8 @@
           "increment": false,
           "comment": "",
           "id": 1,
-          "size": 50
+          "size": "",
+          "values": []
         },
         {
           "name": "ParentUID",
@@ -300,21 +275,7 @@
           "values": []
         },
         {
-          "name": "PageUID",
-          "type": "UUID",
-          "default": "",
-          "check": "",
-          "primary": false,
-          "unique": false,
-          "notNull": false,
-          "increment": false,
-          "comment": "",
-          "id": 3,
-          "size": "",
-          "values": []
-        },
-        {
-          "name": "Level",
+          "name": "Hierarchy",
           "type": "SMALLINT",
           "default": "",
           "check": "",
@@ -323,7 +284,9 @@
           "notNull": false,
           "increment": false,
           "comment": "",
-          "id": 4
+          "id": 3,
+          "size": 50,
+          "values": []
         },
         {
           "name": "Sortby",
@@ -335,7 +298,63 @@
           "notNull": false,
           "increment": false,
           "comment": "",
-          "id": 5
+          "id": 4,
+          "size": 50,
+          "values": []
+        },
+        {
+          "name": "DisplayName",
+          "type": "VARCHAR",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": false,
+          "increment": false,
+          "comment": "",
+          "id": 5,
+          "size": 50,
+          "values": []
+        },
+        {
+          "name": "Description",
+          "type": "VARCHAR",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": false,
+          "increment": false,
+          "comment": "",
+          "id": 6,
+          "size": 50,
+          "values": []
+        },
+        {
+          "name": "URL",
+          "type": "VARCHAR",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": false,
+          "increment": false,
+          "comment": "",
+          "id": 7,
+          "size": 255
+        },
+        {
+          "name": "IconLeft",
+          "type": "VARCHAR",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": false,
+          "increment": false,
+          "comment": "",
+          "id": 8,
+          "size": 255
         }
       ],
       "comment": "",
@@ -345,9 +364,9 @@
     },
     {
       "id": 5,
-      "name": "RoleAuth",
+      "name": "RoleMenu",
       "x": 45,
-      "y": 278,
+      "y": 279,
       "fields": [
         {
           "name": "GUID",
@@ -396,6 +415,99 @@
       "indices": [],
       "color": "#175e7a",
       "key": 1715757777511
+    },
+    {
+      "id": 6,
+      "name": "PageAuth",
+      "x": 411,
+      "y": 188,
+      "fields": [
+        {
+          "name": "GUID",
+          "type": "UUID",
+          "default": "",
+          "check": "",
+          "primary": true,
+          "unique": true,
+          "notNull": true,
+          "increment": false,
+          "comment": "",
+          "id": 0,
+          "size": "",
+          "values": []
+        },
+        {
+          "name": "PageUID",
+          "type": "UUID",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": false,
+          "increment": false,
+          "comment": "",
+          "id": 1,
+          "size": "",
+          "values": []
+        },
+        {
+          "name": "RoleUID",
+          "type": "UUID",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": false,
+          "increment": false,
+          "comment": "",
+          "id": 2,
+          "size": "",
+          "values": []
+        },
+        {
+          "name": "Add",
+          "type": "CHAR",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": false,
+          "increment": false,
+          "comment": "",
+          "id": 3,
+          "size": 1
+        },
+        {
+          "name": "Delete",
+          "type": "CHAR",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": false,
+          "increment": false,
+          "comment": "",
+          "id": 4,
+          "size": 1
+        },
+        {
+          "name": "Modify",
+          "type": "CHAR",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": false,
+          "increment": false,
+          "comment": "",
+          "id": 5,
+          "size": 1
+        }
+      ],
+      "comment": "",
+      "indices": [],
+      "color": "#175e7a",
+      "key": 1716534301920
     }
   ],
   "relationships": [
@@ -425,7 +537,7 @@
       "startTableId": 3,
       "startFieldId": 0,
       "endTableId": 4,
-      "endFieldId": 3,
+      "endFieldId": 1,
       "cardinality": "One to many",
       "updateConstraint": "No action",
       "deleteConstraint": "No action",
@@ -453,6 +565,28 @@
       "deleteConstraint": "No action",
       "name": "Menu_GUID_fk",
       "id": 4
+    },
+    {
+      "startTableId": 3,
+      "startFieldId": 0,
+      "endTableId": 6,
+      "endFieldId": 1,
+      "cardinality": "One to many",
+      "updateConstraint": "No action",
+      "deleteConstraint": "No action",
+      "name": "Pages_GUID_fk",
+      "id": 5
+    },
+    {
+      "startTableId": 1,
+      "startFieldId": 0,
+      "endTableId": 6,
+      "endFieldId": 2,
+      "cardinality": "One to many",
+      "updateConstraint": "No action",
+      "deleteConstraint": "No action",
+      "name": "Role_GUID_fk",
+      "id": 6
     }
   ],
   "notes": [],

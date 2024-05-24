@@ -31,7 +31,7 @@ namespace WebAPI.Controllers
             }
             else
             {
-
+                list = menu.GetMenuID(UserID);
             }
             //判斷是否為admin
             return Ok(list);

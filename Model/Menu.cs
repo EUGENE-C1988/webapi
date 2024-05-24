@@ -37,21 +37,39 @@ namespace WebAPI.Model
             //string connectionString = _configuration.GetConnectionString("DefaultConnectionString");
             //string connectionString = _configuration["ConnectionStrings:DefaultConnectionString"];
             string sql = @"SELECT [GUID]
-      ,[DisplayName]
-      ,[ParentUID]
-      ,[PageUID]
-      ,[Hierarchy]
-      ,[Sortby]
-      ,[Description]
-      ,[URL]
-      ,[IconLeft]
-        FROM [sideproject].[dbo].[Menu]";
+                            ,[DisplayName]
+                            ,[ParentUID]
+                            ,[PageUID]
+                            ,[Hierarchy]
+                            ,[Sortby]
+                            ,[Description]
+                            ,[URL]
+                            ,[IconLeft]
+                        FROM [sideproject].[dbo].[Menu]";
             using (SqlConnection conn = new SqlConnection(GetConnection()))
             {
                 List<Menu> list = conn.Query<Menu>(sql).ToList();
                 return list;
             }
 
+        }
+
+        public List<Menu> GetMenuID(string id)
+        {
+            string sql = @"select e.*
+                            from UserInfo a
+                            inner join RoleUser b on a.GUID=b.UserUID
+                            inner join Roles c on b.RoleUID=c.GUID
+                            inner join RoleMenu d on c.GUID=d.RoleUID
+                            inner join Menu e on d.MenuUID=e.GUID
+                            where a.ID=@id";
+            var parameters = new DynamicParameters();
+            parameters.Add("id", id);
+            using (SqlConnection conn = new SqlConnection(GetConnection()))
+            {
+                List<Menu> list = conn.Query<Menu>(sql, parameters).ToList();
+                return list;
+            }
         }
     }
 }
